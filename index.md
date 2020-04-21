@@ -2,7 +2,9 @@
 layout: default
 ---
 
+
 ( Last modified: {{ site.time | date: '%B %d, %Y' }} )
+
 
 Informationen, falls [eCampus](ecampus.uni-bonn.de) nicht erreichbar ist.
 
