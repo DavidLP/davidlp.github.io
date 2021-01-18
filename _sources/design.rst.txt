@@ -1,0 +1,248 @@
+******
+Design
+******
+
+For the simulation of the production flow `production sites` and `production processes` are defined.
+
+.. image:: _static/Flow.png
+  :width: 800
+  :alt: Site in the production
+
+The production processes at the site have access to a site storage. They can take, put, or change parts.
+In addition, each site has a shipment process. This process ships parts from the site to other sides in need of these parts.
+
+With this basic design and a generic standard production process, most of the production can be already sufficiently described.
+
+Inputs
+######
+
+Three human readable text files describe the ITk pixel production. These files use `yaml language <https://en.wikipedia.org/wiki/YAML>`_ and are shipped
+with the software. They can be changed or extended. *All* definitions are case sensitive and errors in these files lead to comprehensible error messages, like:
+
+.. code-block:: console
+      
+   RuntimeError: No process at IZM takes input: Sensor wafer planar
+
+   
+Processes file	
+**************
+
+The provided :download:`processes.yaml <../../ipps/input/processes.yml>` defines all production processes, that can be used at the sites. The first 20 lines are:
+
+.. literalinclude:: ../../ipps/input/processes.yml
+   :lines: 1-20
+   :language: yaml
+   
+A process definition has a name, an input and/or output. It might define a rate and additional parameters.
+One can distinguish between 3 processes:
+
+1. A process that has only outputs is a producer process. It creates parts for the ITk detector from parts that are not tracked.
+   For example, the front-end or sensor wafers are first items and their production process has no input.
+
+   .. code-block:: yaml
+
+     FE wafer production:
+       output:
+         Itkpix wafer: 25  # output in lots of 25 wafers
+       rate:
+         - 01.04.2020: 3   # 10% pre-production order (lot 1-3)
+         - 01.10.2020: 28  # 90% main order (lot 4-28)
+
+  The order of 775 front-end wafers happens in two steps, in lots of 25 wafers. 
+  The rate parameter depicts a fixed date of non-repeating production runs. On the 01.04.2020 3 runs with 25 wafers each are produced and shipped to a receiving site and
+  on the 01.10.2020 the remaining wafers are produced.
+
+  .. warning::
+
+     All dates and quantities are exemplary.
+     
+2. A process that has inputs and outputs is the most common production process. Only when all inputs are available at the site storage the process is run and the
+   output is put back to the site storage. When there is no other process at the site that uses the output it is shipped to the next production site.
+   
+   For example, the testing of front-end wafers happens one wafer after another and takes about 48 hours per wafer.
+
+   .. code-block:: yaml
+
+     FE wafer probing:              # name of the process
+       input: Itkpix wafer          # input parts required for process
+       output: Itkpix wafer tested  # output parts from process
+       rate:                        # throuput for the process (parts per time)
+         per run: 48h               # average rate; per wafer probing run 48h
+         
+   The flip chip process for quad modules requires multiple inputs:
+    
+   .. code-block:: yaml
+
+      Flip chip quads:
+        input:
+          Itkpix chip tested: 4
+          Planar sensor tested: 1
+        output: Bare quad module
+        yield: 95%
+        rate:
+          per week: 10
+         
+   All inputs must be available at the site storage. A process with a yield created with the propability of (1 - yield) an output
+   that is unfit for the detector. The name of failed parts have a `failed` suffix. In this example 5% of the quads are `Bare quad module failed`.
+   
+   It is also possible to define a process that can select from multiple possible inputs. The inputs must be seperated by commas:
+    
+   .. code-block:: yaml
+
+      Wafer thinning:
+        input: Planar wafer, 3D wafer 
+        output: Thin planar wafer, Thin 3D wafer
+       
+   The input choises are matched to the output choises, thus a `Thin planar wafer` is only produced when the input is a `Planar wafer`.
+   Since no rate is defined this process happens instantly for all `Planar wafer` or `3D wafer` available in the site storage.
+       
+
+3. A process with only inputs is rare. The detector installation process and the storing of broken parts are the only production processes with inputs only.
+
+Sites file	
+**********
+
+The provided :download:`sites.yaml <../../ipps/input/sites.yml>` defines all production sites. The first 20 lines are:
+
+.. literalinclude:: ../../ipps/input/sites.yml
+   :lines: 1-20
+   :language: yaml
+   
+A site has a name and at least one process, that must be defined in the site definition. To draw the site on the world map a geographical location must be provided, too.
+Additionally, site specific process parameters can be defined, that overwrite the process parameters in the `processes.yaml`.
+
+For example, the wafer testing at Bonn runs at a different rate as defined above (4 wafer probing runs per week). This looks like:
+
+.. code-block:: yaml
+   
+   Bonn:
+     location: Bonn, Germany
+     process:
+       FE wafer probing:
+         rate:
+           per_week: 4
+           
+No inputs and outputs are defined here, since they can be deduced from the production process at the site. However, defining them can often make sense.
+For example, some production processes can choose from different input parts as show above. A site that only accepts one input part can be specified.
+
+Imagine IZM only applies the wafer thinning process defined above to 200 planar wafers. This can be specified as:
+
+.. code-block:: yaml
+   
+   IZM:
+     location: Berlin, Germany
+     process: Wafer thinning
+     input:
+     	Planar wafer: 200
+     output:
+       Thin planar wafer: 10
+       
+After 200 planar wafers are thinned, other thinning sites will receive planar wafers with higher priority. 
+The output is defined with a quantity, too. The quantity specifies the batch size for a shipment.
+Only when 10 thin wafers are produced a parcel with the 10 wafers is send to the next site.
+If not output is defined each part is shipped seperately. This is often not realistic.
+
+Parts file	
+**********
+
+The provided :download:`parts.yaml <../../ipps/input/parts.yml>` defines all (tracked) production parts that make up the the final ATLAS ITk pixel detector. The first 20 lines are:
+
+.. literalinclude:: ../../ipps/input/parts.yml
+   :lines: 1-20
+   :language: yaml
+   
+The information in the parts file is not necessarily required, but allows the calculation of required total parts when assuming process yields.
+Especially, since total quantities are not necessarily fixed and are a function of the assumed yield.
+
+For example, with the total number of wafers defined in the parts file, one can define the comitment of a site for wafer probing in percent.
+
+.. code-block:: yaml
+   
+   Bonn:
+     location: Bonn, Germany
+     process:
+       FE wafer probing:
+     input:
+       Itkpix wafer: 40%
+
+Outputs
+#######
+
+IPPS can create multiple outputs to understand the simulation and to gather information about the production.
+
+Process flow	
+************
+
+A :download:`process flow diagram <_static/process_flow_0.png>` is created when running the simulation. This is useful to spot errors in the
+input definitions and to get a feeling of the processes involved and their interactions.
+
+.. image:: _static/process_flow_0.png
+  :width: 400
+  :alt: Production process flow with detail level 0
+  
+Since this diagram becomes cluttered quickly, 3 levels of detail are provided:
+
+  0. Only the process names and their interconnections are plotted
+     :download:`example <_static/process_flow_0.png>`
+  1. adds part names
+     :download:`example <_static/process_flow_1.png>`
+  2. adds the sites who do the process
+     :download:`example <_static/process_flow_2.png>`
+  
+Sites flow	
+**********
+
+A :download:`site flow diagram <_static/sites_flow_0.png>` is created when running the simulation. This is useful to spot errors in the
+input definitions and to get a feeling for the sites and shipments. It is similar to the world map, but also plot sites without
+location information.
+
+.. image:: _static/sites_flow_0.png
+  :width: 400
+  :alt: Production site shipments with detail level 0
+  
+Since this diagram becomes cluttered quickly, 3 levels of detail are provided:
+
+.. only:: builder_html
+
+  0. Only the site names and their shipments connections are plotted
+     :download:`example <_static/sites_flow_0.png>`
+  1. adds part names to shipments
+     :download:`example <_static/sites_flow_1.png>`
+  2. adds site storage
+     :download:`example <_static/sites_flow_2.png>`
+  
+World map	
+**********
+The :download:`world map <_static/world_map.html>` shows all sites in an interactive plot. Hovering over sites gives the input and output parts. Sites without tracked input
+parts are shown with an open dot. Sites the process parts have filled dots and CERN as a final receiving site is a square.
+Any view can be exported to `png`. 
+
+.. raw:: html
+   :file: _static/world_map.html
+   
+Animated world map	
+******************
+The :download:`animated world map <_static/simulation_animation.html>` has the features of the world map plot, but can visualize the site status and shipments at any selected day. Red sites have only idle processes, green sites have at least on running process.
+Any view at any date can be exported to `png`. 
+
+.. raw:: html
+   :file: _static/simulation_animation.html
+   
+.. note::
+
+   Plot updates when changing the day take a few seconds.
+   
+   
+Report table	
+************
+The :download:`report <_static/Report.xlsx>` is a detailed quantitative report using `XLSX` file format. It contains important information, such as
+
+- Duty cycle of a site (how long is ideling due to missing parts?)
+- Storage capactity (what is the maximum part quantity the site must store?)
+- Detailed daily status report on all processes at all sites
+
+The file format allows to visualize or analyze the data in other repects.
+
+.. image:: _static/Report.png
+  :width: 800
+

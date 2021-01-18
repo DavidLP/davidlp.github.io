@@ -1,0 +1,22 @@
+digraph G {
+	node [color=grey shape=square style=filled]
+	compound=true label="Production sites" labelloc=t
+	TSMC -> CERN
+	CNM -> Advacam
+	FBK -> Advacam
+	"vendor 1" -> IZM
+	"vendor 1" -> Advacam
+	"vendor 2" -> IZM
+	"vendor 2" -> Advacam
+	IZM -> CERN
+	Advacam -> CERN
+	Glasgow -> IZM
+	Glasgow -> Advacam
+	Bonn -> IZM
+	Bonn -> Advacam
+	"LPNHE Paris" -> IZM
+	"LPNHE Paris" -> Advacam
+	CERN -> Glasgow
+	CERN -> Bonn
+	CERN -> "LPNHE Paris"
+}

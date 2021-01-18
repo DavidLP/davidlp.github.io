@@ -1,0 +1,121 @@
+digraph G {
+	compound=true label="Production processes" labelloc=t
+	subgraph cluster_Shipping {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		label=Shipping
+	}
+	subgraph "cluster_FE wafer production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"FE wafer production" [shape=point style=invis]
+		"TSMCFE wafer production" [label=TSMC shape=square]
+		label="FE wafer production"
+	}
+	subgraph "cluster_Sensor wafer production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Sensor wafer production" [shape=point style=invis]
+		"CNMSensor wafer production" [label=CNM shape=square]
+		"FBKSensor wafer production" [label=FBK shape=square]
+		"vendor 1Sensor wafer production" [label="vendor 1" shape=square]
+		"vendor 2Sensor wafer production" [label="vendor 2" shape=square]
+		label="Sensor wafer production"
+	}
+	subgraph "cluster_Quad hybrid production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Quad hybrid production" [shape=point style=invis]
+		label="Quad hybrid production"
+	}
+	subgraph "cluster_Triplet hybrid stave production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Triplet hybrid stave production" [shape=point style=invis]
+		label="Triplet hybrid stave production"
+	}
+	subgraph "cluster_Triplet hybrid rings production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Triplet hybrid rings production" [shape=point style=invis]
+		label="Triplet hybrid rings production"
+	}
+	subgraph "cluster_Triplet hybrid endcap production" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Triplet hybrid endcap production" [shape=point style=invis]
+		label="Triplet hybrid endcap production"
+	}
+	subgraph "cluster_FE wafer probing" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"FE wafer probing" [shape=point style=invis]
+		"GlasgowFE wafer probing" [label=Glasgow shape=square]
+		"BonnFE wafer probing" [label=Bonn shape=square]
+		"LPNHE ParisFE wafer probing" [label="LPNHE Paris" shape=square]
+		label="FE wafer probing"
+	}
+	subgraph "cluster_FE wafer post processing" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"FE wafer post processing" [shape=point style=invis]
+		"IZMFE wafer post processing" [label=IZM shape=square]
+		"AdvacamFE wafer post processing" [label=Advacam shape=square]
+		label="FE wafer post processing"
+	}
+	subgraph "cluster_FE selection" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"FE selection" [shape=point style=invis]
+		"IZMFE selection" [label=IZM shape=square]
+		"AdvacamFE selection" [label=Advacam shape=square]
+		label="FE selection"
+	}
+	subgraph "cluster_Sensor wafer post processing" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Sensor wafer post processing" [shape=point style=invis]
+		"IZMSensor wafer post processing" [label=IZM shape=square]
+		"AdvacamSensor wafer post processing" [label=Advacam shape=square]
+		label="Sensor wafer post processing"
+	}
+	subgraph "cluster_Sensor 3D selection" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Sensor 3D selection" [shape=point style=invis]
+		"AdvacamSensor 3D selection" [label=Advacam shape=square]
+		label="Sensor 3D selection"
+	}
+	subgraph "cluster_Sensor planar selection" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Sensor planar selection" [shape=point style=invis]
+		"IZMSensor planar selection" [label=IZM shape=square]
+		label="Sensor planar selection"
+	}
+	subgraph "cluster_Flip chip" {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		"Flip chip" [shape=point style=invis]
+		"IZMFlip chip" [label=IZM shape=square]
+		"AdvacamFlip chip" [label=Advacam shape=square]
+		label="Flip chip"
+	}
+	subgraph cluster_Installation {
+		node [color=white style=filled]
+		color=lightgrey style=filled
+		Installation [shape=point style=invis]
+		CERNInstallation [label=CERN shape=square]
+		label=Installation
+	}
+	"FE wafer production" -> "FE wafer probing" [label="Itkpix wafer" lhead="cluster_FE wafer probing" ltail="cluster_FE wafer production"]
+	"Sensor wafer production" -> "Sensor wafer post processing" [label="Sensor wafer 3D 50 50,Sensor wafer 3D 25 100,Sensor wafer planar" lhead="cluster_Sensor wafer post processing" ltail="cluster_Sensor wafer production"]
+	"FE wafer probing" -> "FE wafer post processing" [label="Itkpix wafer tested" lhead="cluster_FE wafer post processing" ltail="cluster_FE wafer probing"]
+	"FE wafer post processing" -> "FE selection" [label="Itkpix chip tested" lhead="cluster_FE selection" ltail="cluster_FE wafer post processing"]
+	"FE selection" -> "Flip chip" [label="Itkpix chip passed" lhead="cluster_Flip chip" ltail="cluster_FE selection"]
+	"Sensor wafer post processing" -> "Sensor 3D selection" [label="Sensor 3D 50 50,Sensor 3D 25 100" lhead="cluster_Sensor 3D selection" ltail="cluster_Sensor wafer post processing"]
+	"Sensor wafer post processing" -> "Sensor planar selection" [label="Sensor planar 100,Sensor planar 150" lhead="cluster_Sensor planar selection" ltail="cluster_Sensor wafer post processing"]
+	"Sensor 3D selection" -> "Flip chip" [label="Sensor 3D 50 50 passed,Sensor 3D 25 100 passed" lhead="cluster_Flip chip" ltail="cluster_Sensor 3D selection"]
+	"Sensor planar selection" -> "Flip chip" [label="Sensor planar 100 passed,Sensor planar 150 passed" lhead="cluster_Flip chip" ltail="cluster_Sensor planar selection"]
+	"Flip chip" -> Installation [label="Quad module planar 150 bare,SC module 3D 50 50 bare,Quad module planar 100 bare" lhead=cluster_Installation ltail="cluster_Flip chip"]
+}

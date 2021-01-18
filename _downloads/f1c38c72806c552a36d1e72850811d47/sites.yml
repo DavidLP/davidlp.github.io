@@ -1,0 +1,235 @@
+# Sites for the production of input parts
+TSMC:
+   location: Shanhua, Tainan
+   process: FE wafer production
+   output:
+      Itkpix wafer: 25  # send in lots of 25 wafers
+   shipping:  # export liscence requires shipping to CERN
+      to: CERN
+CNM:
+   location: Barcelona, Spain
+   process:
+      Sensor wafer production:
+         rate:
+            - 01.04.2020: 10
+   output:
+      Sensor wafer 3D 25 100: 10
+
+FBK:
+   location: Trento, Italy
+   process:
+      Sensor wafer production:
+         rate:
+            - 01.04.2020: 10
+   output:
+      Sensor wafer 3D 50 50: 10
+vendor 1:
+   location: CERN
+   process: Sensor wafer production
+   output:
+      Sensor wafer planar: 10
+vendor 2:
+   location: CERN
+   process: Sensor wafer production
+   output:
+      Sensor wafer planar: 10
+# vendor x:
+#    location: CERN
+#    process: Quad hybrid production
+#    output: Common quad hybrid
+   
+# Hybridization
+IZM:
+   location: Berlin, Germany
+   input:
+     - Sensor wafer planar
+#   output: Quad module planar 150 bare
+   process:
+      - FE wafer post processing
+      - FE selection
+      - Sensor wafer post processing
+      #- Sensor 3D selection
+      - Sensor planar selection
+      - Flip chip
+   
+Advacam:
+   location: Prague, Czech Republic
+#   output: Quad module planar 150 bare
+   process:
+      - FE wafer post processing
+      - FE selection
+      - Sensor wafer post processing
+      - Sensor 3D selection
+ #     - Sensor planar selection
+      - Flip chip
+
+# Wafer probing, module building and testing sites
+# Oslo:
+#    location: Oslo, Norway
+#    process:
+#       - L0 module building
+#       - L0 module testing
+# Bergen:
+#    location: Bergen, Norway
+#    process:
+#       - L0 module testing
+Glasgow:
+   location: Glasgow, Scotland
+   process:
+     - FE wafer probing
+     #- OE module building
+     #- OE module testing
+   input:
+      Itkpix wafer: 30%
+   output:
+      Itkpix wafer tested: 10
+# Liverpool:
+#    location: Liverpool, England
+#    process:
+#      - OE module building
+#      - OE module testing
+# Oxford:
+#    location: Oxford, England
+#    process:
+#      - OE module building
+#      - OE module testing
+# LPI Moscow:
+#    location: Moscow, Russia
+#    process:
+#       - OE module building
+#       - OE module testing
+# Munich:
+#    location: Munich, Germany
+#    process:
+#       - L1 module building
+# Goettingen:
+#    location: Goettingen, Germany
+#    process:
+#       - OB module building
+#       - OB module testing
+# Siegen:
+#    location: Siegen, Germany
+#    process:
+#       - OB module building
+#       - OB module testing
+Bonn:
+   location: Bonn, Germany
+   process:
+      - FE wafer probing
+#      - OB module building
+#      - OB module testing
+   input:
+      Itkpix wafer: 40%
+#      Quad module planar 150 bare: 5%
+#      Common quad hybrid:
+   output:
+      Itkpix wafer tested: 6
+#        quad module planar 150
+#    shippment:
+#       parts:  # not required
+#          quad module planar 150:
+#          itkpix wafer:
+
+LPNHE Paris:
+   location: Paris, France
+   process:
+      - FE wafer probing
+#       - OB module building
+#       - OB module testing
+   input:
+      Itkpix wafer: 30%
+   output:
+      Itkpix wafer tested: 5
+# LAL Orsay:
+#    location: Orsay, France
+#    process:
+#       - OB module building
+#       - OB module testing
+# IRFU Saclay:
+#    location: Saclay, France
+#    process:
+#       - OB module building
+#       - OB module testing
+CERN:
+   location: CERN
+   process:
+     - Installation
+#       - Redistribution
+#       - OB module building
+#       - OB module testing
+   input: Itkpix wafer  # redistribution of FE wafer at CERN
+   output:
+     - Itkpix wafer: 25
+# Genova:
+#    location: Genova, Italy
+#    process:
+#       - L0 module building
+#       - L1 module building
+#       - OE module building
+# Milano:
+#    location: Milano, Italy
+#    process:
+#       - L0 module building
+#       - L1 module building
+#       - OE module building
+# Bologna:
+#    location: Bologna, Italy
+#    process:
+#       - L0 module testing
+#       - L1 module testing
+#       - OE module testing
+# Trento:
+#    location: Trento, Italy
+#    process:
+#       - L0 module testing
+#       - L1 module testing
+#       - OE module testing
+# Udine:
+#    location: Udine, Italy
+#    process:
+#       - L0 module testing
+#       - L1 module testing
+#       - OE module testing
+# IFAE:
+#    location: IFAE, Spain
+#    process:
+#       - L0 module building
+#       - L0 module testing
+# Argonne:
+#    location: Argonne, USA
+#    process:
+#       - L1 module building
+#       - L1 module testing
+# LBNL:
+#    location: LBNL, USA
+#    process:
+#       - L1 module building
+#       - L1 module testing
+# UCSC:
+#    location: Santa Cruz, USA
+#    process:
+#       - L1 module testing
+# Kyushu University:
+#    location: Fukuoka, Japan
+#    process:
+#      - OB module building
+#      - OB module testing
+#      - OE module building
+#      - OE module testing
+# KEK:
+#    location: Tsukuba, Ibaraki prefecture, Japan
+#    process:
+#      - OB module building
+#      - OB module testing
+#      - OE module building
+#      - OE module testing
+# hayashi-REPIC:
+#    location: Tokyo, Japan
+#    process:
+#      - OB module building
+#      - OE module building
+      
+      
+      
+      
+      

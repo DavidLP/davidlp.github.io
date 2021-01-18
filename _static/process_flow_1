@@ -1,0 +1,14 @@
+digraph G {
+	node [color=grey shape=square]
+	compound=true label="Production processes" labelloc=t
+	"FE wafer production" -> "FE wafer probing" [label="Itkpix wafer"]
+	"Sensor wafer production" -> "Sensor wafer post processing" [label="Sensor wafer 3D 50 50,Sensor wafer 3D 25 100,Sensor wafer planar"]
+	"FE wafer probing" -> "FE wafer post processing" [label="Itkpix wafer tested"]
+	"FE wafer post processing" -> "FE selection" [label="Itkpix chip tested"]
+	"FE selection" -> "Flip chip" [label="Itkpix chip passed"]
+	"Sensor wafer post processing" -> "Sensor 3D selection" [label="Sensor 3D 50 50,Sensor 3D 25 100"]
+	"Sensor wafer post processing" -> "Sensor planar selection" [label="Sensor planar 100,Sensor planar 150"]
+	"Sensor 3D selection" -> "Flip chip" [label="Sensor 3D 50 50 passed,Sensor 3D 25 100 passed"]
+	"Sensor planar selection" -> "Flip chip" [label="Sensor planar 100 passed,Sensor planar 150 passed"]
+	"Flip chip" -> Installation [label="Quad module planar 150 bare,SC module 3D 50 50 bare,Quad module planar 100 bare"]
+}
