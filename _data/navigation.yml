@@ -1,6 +1,6 @@
 main:
-  - title: "Hello"
-    url: /about/
+  # - title: "Hello"
+  #   url: /about/
   - title: "Live"
     url: /live/
   - title: "Denmark"
