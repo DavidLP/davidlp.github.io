@@ -1,19 +1,23 @@
 main:
-  # - title: "Hello"
-  #   url: /about/
-  - title: "Live"
-    url: /live/
-  - title: "Denmark"
-    url: /denmark/
-  - title: "Germany"
-    url: /germany/
-  - title: "India"
-    url: /india/
-  - title: "Media"
-    url: /media/
-  # - title: "Posts"
-  #   url: /posts/
-  # - title: "404"
-  #   url: /404/
-  # - title: "Tags"
-  #   url: /tags/
+  en:
+    - title: "Denmark"
+      url: /en/denmark/
+    - title: "Germany"
+      url: /en/germany/
+    - title: "India"
+      url: /en/india/
+    - title: "Live"
+      url: /en/live/
+    - title: "Media"
+      url: /en/media/
+  de:
+    - title: "Dänemark"
+      url: /de/denmark/
+    - title: "Deutschland"
+      url: /de/germany/
+    - title: "Indien"
+      url: /de/india/
+    - title: "Live"
+      url: /de/live/
+    - title: "Medien"
+      url: /de/media/

@@ -1,0 +1,59 @@
+{% capture logo_path %}{{ site.logo }}{% endcapture %}
+
+<div class="masthead">
+    <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+            <nav id="site-nav" class="greedy-nav">
+                {% unless logo_path == empty %}
+                {% if page.lang == site.lang %}
+                {% assign logo_url = '/' | relative_url %}
+                {% else %}
+                {% assign logo_url = '/' | append: page.lang | relative_url %}
+                {% endif %}
+                <a class="site-logo" href="{{ logo_url }}"><img src="{{ logo_path | relative_url }}" alt=""></a>
+                {% endunless %}
+                <a class="site-title" href="{{ '/' | append: page.lang | relative_url }}">
+                    {{ site.masthead_title | default: site.title }}
+                    {% if site.subtitle %}<span class="site-subtitle">{{ site.subtitle }}</span>{% endif %}
+                </a>
+                <ul class="visible-links">
+                    {%- for link in site.data.navigation.main[page.lang] -%}
+                    <li class="masthead__menu-item">
+                        <a href="{{ link.url | relative_url }}" {% if link.description %} title="{{ link.description }}"
+                            {% endif %}>{{ link.title }}</a>
+                    </li>
+                    {%- endfor -%}
+
+                    <ul>
+                        {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+                        {% for post in posts %}
+                        <li>
+                            <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a>
+                        </li>
+                        {% endfor %}
+
+                        {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
+                        {% for page in pages %}
+                        <li>
+                            <a href="{{ page.url }}" class="{{ page.lang }}">{{ page.lang }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </ul>
+                {% if site.search == true %}
+                <button class="search__toggle" type="button">
+                    <span class="visually-hidden">{{ site.data.ui-text[site.locale].search_label | default: "Toggle
+                        search" }}</span>
+                    <i class="fas fa-search"></i>
+                </button>
+                {% endif %}
+                <button class="greedy-nav__toggle hidden" type="button">
+                    <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu"
+                        }}</span>
+                    <div class="navicon"></div>
+                </button>
+                <ul class="hidden-links hidden"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
