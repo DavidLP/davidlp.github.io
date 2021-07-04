@@ -19,10 +19,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   This page collects some information about our wedding.
 # twitter_username: username
 # github_username: username
-locale: "de-DE"
+locale: de
+lang: en
 minimal_mistakes_skin: dark
 search: false
-logo: "/assets/images/Logo_960x960.png"
+logo: "/assets/images/Logo_256x256.png"
 
 atom_feed:
   hide: true
@@ -46,11 +47,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - .history
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - media
 
 # Plugins (previously gems:)
 plugins:
@@ -64,7 +61,7 @@ plugins:
 author:
   name   : "Diana & David"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Welcome to our internet page! Herzlich willommen zu unserer Internetseite!"
+  # bio    : "Welcome to our internet page! Herzlich willommen zu unserer Internetseite!"
 #  links:
 #    - label: "Website"
 #      icon: "fas fa-fw fa-link"
