@@ -2,7 +2,7 @@
 layout: single
 lang: en
 permalink: /en/germany/
-ref: gemany
+ref: germany
 title: "Germany"
 header:
   overlay_image: /assets/images/Bonn.jpeg

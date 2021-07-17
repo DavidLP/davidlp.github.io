@@ -4,6 +4,7 @@ lang: de
 permalink: /de/denmark/
 ref: denmark
 title: "Dänemark"
+last_modified_at: 17.07.2021
 header:
   overlay_image: /assets/images/Copenhagen.jpg
   caption: "CC BY 3.0 Ryan Bodenstein"
@@ -35,5 +36,10 @@ Außerdem werden die Fotos später [hier]({% link _pages/media-de.md %}) zu find
 ## 15:00 Uhr: Empfang
   {% include figure image_path="/assets/images/wine_cake.jpg" caption="Empfang mit Wein und Kuchen" %}
 
-## 19:00 Uhr: Abendessen
-  {% include figure image_path="/assets/images/dinner.jpg" caption="Gemeinsames Abendessen" %}
+## 19:00 Uhr: Abendessen am Wasser
+  Am Abend gehen wir auf eine Halbinsel lecker Essen und Trinken. Das Restaurant heißt [Ravelinen](https://ravelinen.dk/) und ist wohl irgendwas zwischen "Fine Dining" und Biergarten.
+  {% include figure image_path="https://ravelinen.dk/wp-content/uploads/2020/04/3.jpg" caption="© ravelinen.dk" %}
+  Es ist von dem Hotel, wo die meisten von uns übernachten, in etwa einer halben Stunde zu Fuß zu erreichen.
+
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.075279289791!2d12.593418515927308!3d55.67029108053137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46525338f7831b61%3A0x62ce4261623c0ea2!2sRavelinen!5e0!3m2!1sde!2sde!4v1626464114157!5m2!1sde!2sde" frameborder="0" scrolling="no" style="overflow:hidden; height:100%; width:100%;" height="100%" width="100%" loading="lazy"></iframe>
+  Spätestens um 23:00 Uhr machen alle Restaurants wegen Coronaauflagen (Ausschankverbot) zu.
