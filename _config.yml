@@ -23,6 +23,7 @@ locale: de
 lang: en
 minimal_mistakes_skin: dark
 search: false
+count_api_namespace: dandd
 logo: "/assets/images/Logo_256x256.png"
 
 atom_feed:
@@ -107,6 +108,8 @@ defaults:
     values:
       layout: single
       author_profile: false
+      # show_date: True
+      # date: 04.07.2021
 
 category_archive:
   type: liquid

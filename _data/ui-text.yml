@@ -50,6 +50,7 @@ en: &DEFAULT_EN
   search_algolia_no_results  : "No results"
   results_found              : "Result(s) found"
   back_to_top                : "Back to top"
+  visitor_label              : "Visits"
 en-US:
   <<: *DEFAULT_EN
 en-CA:
@@ -528,6 +529,7 @@ de: &DEFAULT_DE
   search_placeholder_text    : "Suchbegriff eingeben..."
   search_algolia_no_results  :
   results_found              : "Ergebnis(se) gefunden"
+  visitor_label              : "Aufrufe"
 de-DE:
   <<: *DEFAULT_DE
 de-AT:

@@ -6,14 +6,16 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#252a34">
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var userLang = navigator.language || navigator.userLanguage;
-        if ((userLang == "de") || (userLang == "de-DE")) {
-            window.location.href = "{{ site.url }}/de/"
-        }
-        else {
-            window.location.href = "{{ site.url }}/en/"
-        }
-    });
+{% if site.url contains "localhost" %}
+{% assign namespace = "onlyatest" %}
+{% else %}
+{% assign namespace = site.count_api_namespace %}
+{% endif %}
+
+<script src="https://api.countapi.xyz/hit/{{ namespace }}/{{ page.ref }}?callback=liveViews" async></script>
+
+<script>
+    function liveViews(response) {
+        document.getElementById('visits').innerText = response.value;
+    }
 </script>

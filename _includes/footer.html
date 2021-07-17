@@ -22,5 +22,9 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{
-  site.data.ui-text[page.lang].powered_by | default: "" }}</div>
+<div class="page__footer-copyright">&copy;
+  {{ site.time | date: '%Y.' }} {{ site.name | default: site.title }} {{site.data.ui-text[page.lang].powered_by |
+  default: "" }}
+
+  <span id="visits"></span> {{site.data.ui-text[page.lang].visitor_label | default: "Visitors" }}.
+</div>
