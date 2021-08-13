@@ -1,6 +1,7 @@
 ---
 layout: single
 ref: media
+last_modified_at: 13.08.2021
 permalink: /de/media/
 lang: de
 title: "Medien"
@@ -44,9 +45,14 @@ gallery:
 
 Die Fotos und Videos der verschiedenen festlichen Akte werden hier zur Verfügung gestellt.
 
-Im Moment gibt es hier noch nichts :smile:. Nur eine Testgallerie mit ein paar zufällig ausgewählten Fotos.
+# Die Brücke nach Dänemark
+<video controls="controls" height="100%" width="100%">
+  <source src="/assets/output.mp4" type="video/mp4">
+</video>
 
-{% include gallery caption="Testgallerie" %}
+<!-- Im Moment gibt es hier noch nichts :smile:. Nur eine Testgallerie mit ein paar zufällig ausgewählten Fotos.
+
+{% include gallery caption="Testgallerie" %} -->
 
 <!-- <video muted autoplay controls width="50%" height="50%">
     <source src="/assets/composite.mp4" type="video/mp4">
