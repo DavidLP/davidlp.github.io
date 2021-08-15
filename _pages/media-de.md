@@ -1,7 +1,7 @@
 ---
 layout: single
 ref: media
-last_modified_at: 13.08.2021
+last_modified_at: 15.08.2021
 permalink: /de/media/
 lang: de
 title: "Medien"
@@ -43,12 +43,31 @@ gallery:
 
 ---
 
-Die Fotos und Videos der verschiedenen festlichen Akte werden hier zur Verfügung gestellt.
+Die Fotos und Videos der verschiedenen festlichen Akte sind hier zu finden.
 
-# Die Brücke nach Dänemark
+# Dänemark
+
+## Brücke nach Kopenhagen
 <video controls="controls" height="100%" width="100%">
-  <source src="/assets/output.mp4" type="video/mp4">
+  <source src="/assets/Bridge.mp4" type="video/mp4">
 </video>
+
+## Vor dem Rathaus Frederiksberg
+<video controls="controls" height="100%" width="100%">
+  <source src="/assets/EnteringTheTownHall_20210814_112016.mp4" type="video/mp4">
+</video>
+
+<!-- ## Zivilehe
+<video controls="controls" height="100%" width="100%">
+  <source src="/assets/CivilMarriage_20210814_113338.mp4" type="video/mp4">
+</video>
+
+## Kirchliche Trauung
+<video controls="controls" height="100%" width="100%">
+  <source src="/assets/ChurchMarriage.mp4" type="video/mp4">
+</video> -->
+
+
 
 <!-- Im Moment gibt es hier noch nichts :smile:. Nur eine Testgallerie mit ein paar zufällig ausgewählten Fotos.
 
