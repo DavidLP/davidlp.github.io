@@ -1,1 +1,5 @@
 assets/EnteringTheTownHall_20210814_112016.mp4 filter=lfs diff=lfs merge=lfs -text
+assets/videos/Bridge.mp4 filter=lfs diff=lfs merge=lfs -text
+assets/videos/EnteringTheTownHall_20210814_112016.mp4 filter=lfs diff=lfs merge=lfs -text
+assets/videos/CivilMarriage_20210814_113338.mp4 filter=lfs diff=lfs merge=lfs -text
+assets/videos/ChurchMarriage.mp4 filter=lfs diff=lfs merge=lfs -text
