@@ -6,10 +6,10 @@ main:
       url: /en/germany/
     - title: "India"
       url: /en/india/
-    - title: "Live"
-      url: /en/live/
     - title: "Media"
       url: /en/media/
+    - title: "Live"
+      url: /en/live/
   de:
     - title: "Dänemark"
       url: /de/denmark/
@@ -17,7 +17,7 @@ main:
       url: /de/germany/
     - title: "Indien"
       url: /de/india/
-    - title: "Live"
-      url: /de/live/
     - title: "Medien"
       url: /de/media/
+    - title: "Live"
+      url: /de/live/

@@ -1,7 +1,7 @@
 ---
 layout: single
 ref: media
-last_modified_at: 15.08.2021
+last_modified_at: 17.08.2021
 permalink: /de/media/
 lang: de
 title: "Medien"
@@ -49,30 +49,26 @@ Die Fotos und Videos der verschiedenen festlichen Akte sind hier zu finden.
 
 ## Brücke nach Kopenhagen
 <video controls="controls" height="100%" width="100%">
-  <source src="/assets/Bridge.mp4" type="video/mp4">
+  <source src="https://onedrive.live.com/download?cid=E94943F8E0EFC109&resid=E94943F8E0EFC109%21101079&authkey=AGvzQsTQbmsXZNA" type="video/mp4">
 </video>
 
 ## Vor dem Rathaus Frederiksberg
-<video controls="controls" height="100%" width="100%">
-  <source src="/assets/EnteringTheTownHall_20210814_112016.mp4" type="video/mp4">
+<video controls="controls" height="100%" width="100%" poster="/assets/videos/EnteringTownHallPreview.jpg">
+  <source src="https://onedrive.live.com/download?cid=E94943F8E0EFC109&resid=E94943F8E0EFC109%21101076&authkey=ANjxzNae0kS2iAc" type="video/mp4">
 </video>
 
-<!-- ## Zivilehe
-<video controls="controls" height="100%" width="100%">
-  <source src="/assets/CivilMarriage_20210814_113338.mp4" type="video/mp4">
+## Zivilehe
+<video controls="controls" height="100%" width="100%" poster="/assets/videos/CivilMarriage.jpg">
+  <source src="https://onedrive.live.com/download?cid=E94943F8E0EFC109&resid=E94943F8E0EFC109%21101077&authkey=AOOgfJj7PM92s_g" type="video/mp4">
 </video>
 
 ## Kirchliche Trauung
-<video controls="controls" height="100%" width="100%">
-  <source src="/assets/ChurchMarriage.mp4" type="video/mp4">
-</video> -->
+<video controls="controls" height="100%" width="100%" poster="/assets/videos/Church_1.jpg">
+  <source src="https://onedrive.live.com/download?cid=E94943F8E0EFC109&resid=E94943F8E0EFC109%21101078&authkey=AIGeg2f8AfxOS5Y" type="video/mp4">
+</video>
 
 
 
 <!-- Im Moment gibt es hier noch nichts :smile:. Nur eine Testgallerie mit ein paar zufällig ausgewählten Fotos.
 
 {% include gallery caption="Testgallerie" %} -->
-
-<!-- <video muted autoplay controls width="50%" height="50%">
-    <source src="/assets/composite.mp4" type="video/mp4">
-</video> -->
