@@ -1,7 +1,7 @@
 ---
 layout: single
 ref: media
-last_modified_at: 17.08.2021
+last_modified_at: 29.08.2021
 permalink: /en/media/
 lang: en
 title: "Media"
@@ -192,12 +192,18 @@ gallery_church:
     url: /assets/photos/Diana and David-1-189_small.jpg
   - image_path: /assets/photos/Diana and David-1-190_thumbnail.jpg
     url: /assets/photos/Diana and David-1-190_small.jpg
+  - image_path: /assets/photos/Diana and David-1-198_thumbnail.jpg
+    url: /assets/photos/Diana and David-1-198_small.jpg
+  - image_path: /assets/photos/Diana and David-1-199_thumbnail.jpg
+    url: /assets/photos/Diana and David-1-199_small.jpg
   - image_path: /assets/photos/Diana and David-1-201_thumbnail.jpg
     url: /assets/photos/Diana and David-1-201_small.jpg
   - image_path: /assets/photos/Diana and David-1-203_thumbnail.jpg
     url: /assets/photos/Diana and David-1-203_small.jpg
   - image_path: /assets/photos/Diana and David-1-206_thumbnail.jpg
     url: /assets/photos/Diana and David-1-206_small.jpg
+  - image_path: /assets/photos/Diana and David-1-208_thumbnail.jpg
+    url: /assets/photos/Diana and David-1-208_small.jpg
 gallery_fotoshoot:
   - image_path: /assets/photos/Diana and David-1-227_thumbnail.jpg
     url: /assets/photos/Diana and David-1-227_small.jpg
